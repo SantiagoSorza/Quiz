@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="Css/index.css" />
+</head>
+<body>
+    <h1>Nombre: Vivian Maria Arias Patiño y Santiago Sorza Gonzalez</h1>
+        <form name="formulario"  id="registro">
+            <div>
+                <label> Codigo:</label>
+                <input type="text" name="codigoInp" required>
+                <div id="msg"></div>
+            </div>
+            <div>
+                <label> Nombre:</label>
+                <input type="text" name="nombreInp" required>
+                <div id="Nombremsg"></div>
+            </div>
+            <div>
+                <label> 20%:</label>
+                <input type="text" name="nota1Inp" required>
+                <div id="notamsg"></div>
+            </div>
+            <div>
+                <label> 20%:</label>
+                <input type="text" name="nota1Inp" required>
+                <div id="notamsg"></div>
+            </div>
+            <div>
+                <label> 20%:</label>
+                <input type="text" name="nota1Inp" required>
+                <div id="notamsg"></div>
+            </div>
+            <div>
+                <label> 40%:</label>
+                <input type="text" name="nota1Inp" required>
+                <div id="notamsg"></div>
+            </div>
+            <div>
+                <button type="submit" name="Guarda" id="guardar">Guardar</button>
+            </div>
+
+    <table border="1" id="tabla">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>20%</th>
+                <th>20%</th>
+                <th>20%</th>
+                <th>40%</th>
+                <th>Definitiva</th>
+                <th>Aprobado / No Aprobado</th>
+            </tr>     
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td type="text" id="codigo"></td>
+                <td type="text" id="nombre"></td>
+                <td type="number" id="nota1" step="0.01"></td>
+                <td type="number" id="nota2" step="0.01"></td>
+                <td type="number" id="nota3" step="0.01"></td>
+                <td type="number" id="nota4" step="0.01"></td>
+                <td type="number" id="definitiva"></td>
+                <td type="text" id="aprocion"></td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <script src="Js/index.js"></script>
+
+</body>
+</html>
