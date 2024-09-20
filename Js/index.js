@@ -20,10 +20,10 @@ const cargarDatos = (dato) => {
   const buttonCeld1 = document.createElement("td");
   buttonCeld1.textContent = dato.Button;
   const codigoCeld = document.createElement("td");
-  codigoCeld.textContent = dato.Codigo;
+  codigoCeld.textContent = dato.codigo;
 
   const nombreCeld = document.createElement("td");
-  nombreCeld.textContent = dato.Nombre;
+  nombreCeld.textContent = dato.nombre;
 
   const nota1Celd = document.createElement("td");
   nota1Celd.textContent = dato.nota1;
@@ -45,7 +45,7 @@ const cargarDatos = (dato) => {
 
  // Determinar si está aprobado
  const aprobacionCeld = document.createElement('td');
- aprobacionCeld.textContent = definitiva >= 3 ? 'Aprobado' : 'No Aprobado';
+ aprobacionCeld.textContent = definitiva >= 30 ? 'Aprobado' : 'No Aprobado';
 
   row.appendChild(buttonCeld1);
   row.appendChild(codigoCeld);
