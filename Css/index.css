@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    grid-template-areas:
+    "h f"
+}
+.tabla{
+    grid-area: f;
+}
+.registro{
+    grid-area: h;
+}
