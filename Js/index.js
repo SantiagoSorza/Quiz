@@ -1,68 +1,78 @@
 //todos los formularios
 const formulario = document.forms["formulario"];
 
-
-
 //Msg
 
-const codigomsg = document.getElementById('codigomsg');
-const modalmsg = document.getElementById('modalmsg');
-
-
+const codigomsg = document.getElementById("codigomsg");
+const modalmsg = document.getElementById("modalmsg");
 
 //valiables
-const listaEstudiantes = document.getElementById('listaEstudiantes');
-const codigoInp = contactoForm['codigoInp'];
+const codigoInp = formulario["codigoInp"];
+
+const listaEstudiantes = document.getElementById("listaEstudiantes");
+
 //Metodo
 
+const cargarDatos = (dato) => {
+  const row = document.createElement("tr");
+  ////-------------
+  const buttonCeld1 = document.createElement("td");
+  buttonCeld1.textContent = dato.Button;
+  const codigoCeld = document.createElement("td");
+  codigoCeld.textContent = dato.Codigo;
 
+  const nombreCeld = document.createElement("td");
+  nombreCeld.textContent = dato.Nombre;
 
+  const nota1Celd = document.createElement("td");
+  nota1Celd.textContent = dato.Nota1;
 
+  const nota2Celd = document.createElement("td");
+  nota2Celd.textContent = dato.Nota2;
 
-const cargarDatos = (datos)=>{
-    const row = document.createElement('tr')
-    ////-------------
-    const codigoCeld = document.createElement('td');
-    codigoCeld.textContent = datos.codigo;
+  const nota3Celd = document.createElement("td");
+  nota3Celd.textContent = dato.Nota3;
 
-    const nombreCeld = document.createElement('td');
-    nombreCeld.textContent = datos.nombre;
+  const nota4Celd = document.createElement("td");
+  nota4Celd.textContent = dato.Nota4;
+  ////-------------
 
-    const nota1Celd = document.createElement('td');
-    nota1Celd.textContent = datos.nota1;
-    const nota2Celd = document.createElement('td');
-    nota2Celd.textContent = datos.nota2;
-    const nota3Celd = document.createElement('td');
-    nota3Celd.textContent = datos.nota3;
-    const nota4Celd = document.createElement('td');
-    nota4Celd.textContent = datos.nota4;
-     ////-------------
-    
+ // Calcular la definitiva
+ const definitiva = (dato.Nota1 * 0.2) + (dato.Nota2 * 0.2) + (dato.Nota3 * 0.2) + (dato.Nota4 * 0.4);
+ const definitivaCeld = document.createElement('td');
+ definitivaCeld.textContent = definitiva.toFixed(2);
 
-     btnCeld.appendChild(button)
-     row.appendChild(codigoCeld)
-     row.appendChild(nombreCeld)
-     row.appendChild(nota1Celd)
-     row.appendChild(nota2Celd)
-     row.appendChild(nota3Celd)
-     row.appendChild(nota4Celd)
-}
+ // Determinar si está aprobado
+ const aprobacionCeld = document.createElement('td');
+ aprobacionCeld.textContent = definitiva >= 3 ? 'Aprobado' : 'No Aprobado';
+  row.appendChild(buttonCeld1);
+  row.appendChild(codigoCeld);
+  row.appendChild(nombreCeld);
+  row.appendChild(nota1Celd);
+  row.appendChild(nota2Celd);
+  row.appendChild(nota3Celd);
+  row.appendChild(nota4Celd);
+  row.appendChild(definitivaCeld);
+  row.appendChild(aprobacionCeld);
+
+  const tbody = tabla.getElementsByTagName("tbody")[0];
+  tbody.appendChild(row);
+};
 ////
 formulario.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const codigo = codigo.value
-    if(validarNombre(codigo)){
+  event.preventDefault();
+  const codigo = codigoInp.value;
 
-        const dato ={
-            Codigo: codigoInp.value,
-            Nombre: contactoForm['nombreInp'].value,
-            Nota1: contactoForm['nota1Inp'].value,
-            Nota2: contactoForm['nota2Inp'].value,
-            Nota3: contactoForm['nota3Inp'].value,
-            Nota4: contactoForm['nota4Inp'].value,
 
-        };
-        cargarDatos(datos);
+    const dato = {
+      codigo: codigoInp.value,
+      nombre: formulario["nombreInp"].value,
+      nota1: formulario["nota1Inp"].value,
+      nota2: formulario["nota2Inp"].value,
+      nota3: formulario["nota3Inp"].value,
+      nota4: formulario["nota4Inp"].value,
     }
-})
-codigoInp.addEventListener("keyup", () => { validarCodigo(codigoInp.value); });
+
+    cargarDatos(dato);
+  });
+

@@ -14,8 +14,8 @@ main {
     "h f"
 }
 .tabla{
-    grid-area: f;
+    grid-area: h;
 }
 .registro{
-    grid-area: h;
+    grid-area: f;
 }
