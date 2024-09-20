@@ -8,8 +8,9 @@ const modalmsg = document.getElementById("modalmsg");
 
 //valiables
 const codigoInp = formulario["codigoInp"];
-
 const listaEstudiantes = document.getElementById("listaEstudiantes");
+
+
 
 //Metodo
 
@@ -25,26 +26,27 @@ const cargarDatos = (dato) => {
   nombreCeld.textContent = dato.Nombre;
 
   const nota1Celd = document.createElement("td");
-  nota1Celd.textContent = dato.Nota1;
+  nota1Celd.textContent = dato.nota1;
 
   const nota2Celd = document.createElement("td");
-  nota2Celd.textContent = dato.Nota2;
+  nota2Celd.textContent = dato.nota2;
 
   const nota3Celd = document.createElement("td");
-  nota3Celd.textContent = dato.Nota3;
+  nota3Celd.textContent = dato.nota3;
 
   const nota4Celd = document.createElement("td");
-  nota4Celd.textContent = dato.Nota4;
+  nota4Celd.textContent = dato.nota4;
   ////-------------
 
  // Calcular la definitiva
- const definitiva = (dato.Nota1 * 0.2) + (dato.Nota2 * 0.2) + (dato.Nota3 * 0.2) + (dato.Nota4 * 0.4);
+ const definitiva = (parseFloat(dato.nota1) * 0.2) + (parseFloat(dato.nota2) * 0.2) + (parseFloat(dato.nota3) * 0.2) + (parseFloat(dato.nota4) * 0.4);
  const definitivaCeld = document.createElement('td');
  definitivaCeld.textContent = definitiva.toFixed(2);
 
  // Determinar si está aprobado
  const aprobacionCeld = document.createElement('td');
  aprobacionCeld.textContent = definitiva >= 3 ? 'Aprobado' : 'No Aprobado';
+
   row.appendChild(buttonCeld1);
   row.appendChild(codigoCeld);
   row.appendChild(nombreCeld);
@@ -61,7 +63,7 @@ const cargarDatos = (dato) => {
 ////
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
-  const codigo = codigoInp.value;
+  
 
 
     const dato = {
