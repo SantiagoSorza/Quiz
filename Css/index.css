@@ -5,17 +5,35 @@
     text-decoration: none;
     list-style: none;
 }
-main {
+
+h1{
+    background-color: #80382c;
+    grid-area: a;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+}
+body {
+    
     width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-columns: 50% 50% ;
     grid-template-areas:
-    "h f"
+    "a a"
+    "f h";
 }
-.tabla{
+.estudiantes{
     grid-area: h;
+    padding: 20px;
 }
 .registro{
+    
     grid-area: f;
+    padding: 20px;
+    display: flex;
+    
+    
+    
+    
 }

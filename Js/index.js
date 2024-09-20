@@ -57,14 +57,13 @@ const cargarDatos = (dato) => {
   row.appendChild(definitivaCeld);
   row.appendChild(aprobacionCeld);
 
-  const tbody = tabla.getElementsByTagName("tbody")[0];
+  const tbody = estudiantes.getElementsByTagName("tbody")[0];
   tbody.appendChild(row);
 };
 ////
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
   
-
 
     const dato = {
       codigo: codigoInp.value,
