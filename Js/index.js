@@ -4,6 +4,8 @@ const formulario = document.forms["formulario"];
 //Msg
 
 const codigomsg = document.getElementById("codigomsg");
+const codigosExistentes = [];
+
 const modalmsg = document.getElementById("modalmsg");
 
 //valiables
@@ -71,17 +73,40 @@ const cargarDatos = (dato) => {
 ////
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
-  
 
-    const dato = {
-      codigo: formulario["codigoInp"].value,
+  const nuevoCodigo = formulario["codigoInp"].value;
+
+  // Verificar si el código ya existe
+  let codigoExistente = false;
+  for (let i = 0; i < codigosExistentes.length; i++) {
+      if (codigosExistentes[i] === nuevoCodigo) {
+          codigoExistente = true;
+          break;
+      }
+  }
+
+  if (codigoExistente) {
+      // Mostrar el mensaje de error
+      codigomsg.style.display = 'block';
+      return; 
+  }
+
+  // Agregar el nuevo código al arreglo 
+  codigosExistentes[codigosExistentes.length] = nuevoCodigo; 
+
+  const dato = {
+      codigo: nuevoCodigo,
       nombre: formulario["nombreInp"].value,
       nota1: formulario["nota1Inp"].value,
       nota2: formulario["nota2Inp"].value,
       nota3: formulario["nota3Inp"].value,
       nota4: formulario["nota4Inp"].value,
-    }
+  };
 
-    cargarDatos(dato);
-  });
+  cargarDatos(dato);
+});
 
+// Evento para cerrar el mensaje
+document.getElementById("cerrarCodigomsg").addEventListener("click", () => {
+  codigomsg.style.display = 'none';
+});

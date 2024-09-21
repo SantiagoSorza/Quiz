@@ -34,12 +34,12 @@
       <div>
         <label> 20%:</label>
         <input type="text" name="nota3Inp" required />
-        <div id="nota2"></div>
+        <div id="nota3"></div>
       </div>
       <div>
         <label> 40%:</label>
         <input type="text" name="nota4Inp" required />
-        <div id="nota3"></div>
+        <div id="nota4"></div>
       </div>
       <div>
         <button type="submit" name="Guarda" id="guardar">Guardar</button>
@@ -76,6 +76,13 @@
     </tbody>
   </table>
 </section>
+
+<!-- mensaje de código repetido -->
+<div id="codigomsg" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:white; border:2px solid black; padding:20px; z-index:1000;">
+  <p>EL CÓDIGO YA EXISTE</p>
+  <button id="cerrarCodigomsg">X</button>
+</div>
+
     <script src="Js/index.js"></script>
   </body>
 </html>
