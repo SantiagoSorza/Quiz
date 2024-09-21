@@ -18,16 +18,17 @@ const listaEstudiantes = document.getElementById("listaEstudiantes");
 
 const cargarDatos = (dato) => {
   const row = document.createElement("tr");
-  ////-------------
 
   const buttonCeld = document.createElement("td");
   const button = document.createElement("button");
   button.textContent = "Eliminar";
-  button.addEventListener('click', ()=>{
-    row.remove(); 
+  
+  
+  button.addEventListener('click', () => {
+    row.remove();
+    delete codigosExistentes[dato.codigo]; 
   });
   
-  //-------
   const codigoCeld = document.createElement("td");
   codigoCeld.textContent = dato.codigo;
 
@@ -45,16 +46,15 @@ const cargarDatos = (dato) => {
 
   const nota4Celd = document.createElement("td");
   nota4Celd.textContent = dato.nota4;
-  ////-------------
 
- // Calcular la definitiva
- const definitiva = (parseFloat(dato.nota1) * 0.2) + (parseFloat(dato.nota2) * 0.2) + (parseFloat(dato.nota3) * 0.2) + (parseFloat(dato.nota4) * 0.4);
- const definitivaCeld = document.createElement('td');
- definitivaCeld.textContent = definitiva.toFixed(2);
+  // Calcular la definitiva
+  const definitiva = (parseFloat(dato.nota1) * 0.2) + (parseFloat(dato.nota2) * 0.2) + (parseFloat(dato.nota3) * 0.2) + (parseFloat(dato.nota4) * 0.4);
+  const definitivaCeld = document.createElement('td');
+  definitivaCeld.textContent = definitiva.toFixed(2);
 
- // Determinar si está aprobado
- const aprobacionCeld = document.createElement('td');
- aprobacionCeld.textContent = definitiva >= 3.0 ? 'Aprobado' : 'No Aprobado';
+  // Determinar si está aprobado
+  const aprobacionCeld = document.createElement('td');
+  aprobacionCeld.textContent = definitiva >= 3.0 ? 'Aprobado' : 'No Aprobado';
 
   buttonCeld.appendChild(button);
   row.appendChild(buttonCeld);
@@ -70,29 +70,21 @@ const cargarDatos = (dato) => {
   const tbody = estudiantes.getElementsByTagName("tbody")[0];
   tbody.appendChild(row);
 };
-////
+
+// Evento para enviar el formulario
 formulario.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const nuevoCodigo = formulario["codigoInp"].value;
 
   // Verificar si el código ya existe
-  let codigoExistente = false;
-  for (let i = 0; i < codigosExistentes.length; i++) {
-      if (codigosExistentes[i] === nuevoCodigo) {
-          codigoExistente = true;
-          break;
-      }
-  }
-
-  if (codigoExistente) {
-      // Mostrar el mensaje de error
+  if (codigosExistentes[nuevoCodigo]) {
       codigomsg.style.display = 'block';
       return; 
   }
 
-  // Agregar el nuevo código al arreglo 
-  codigosExistentes[codigosExistentes.length] = nuevoCodigo; 
+  // Agregar el nuevo código al objeto
+  codigosExistentes[nuevoCodigo] = true;
 
   const dato = {
       codigo: nuevoCodigo,
