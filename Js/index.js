@@ -17,8 +17,15 @@ const listaEstudiantes = document.getElementById("listaEstudiantes");
 const cargarDatos = (dato) => {
   const row = document.createElement("tr");
   ////-------------
-  const buttonCeld1 = document.createElement("td");
-  buttonCeld1.textContent = dato.Button;
+
+  const buttonCeld = document.createElement("td");
+  const button = document.createElement("button");
+  button.textContent = "Eliminar";
+  button.addEventListener('click', ()=>{
+    row.remove(); 
+  });
+  
+  //-------
   const codigoCeld = document.createElement("td");
   codigoCeld.textContent = dato.codigo;
 
@@ -45,9 +52,10 @@ const cargarDatos = (dato) => {
 
  // Determinar si está aprobado
  const aprobacionCeld = document.createElement('td');
- aprobacionCeld.textContent = definitiva >= 30 ? 'Aprobado' : 'No Aprobado';
+ aprobacionCeld.textContent = definitiva >= 3.0 ? 'Aprobado' : 'No Aprobado';
 
-  row.appendChild(buttonCeld1);
+  buttonCeld.appendChild(button);
+  row.appendChild(buttonCeld);
   row.appendChild(codigoCeld);
   row.appendChild(nombreCeld);
   row.appendChild(nota1Celd);
@@ -66,7 +74,7 @@ formulario.addEventListener("submit", (event) => {
   
 
     const dato = {
-      codigo: codigoInp.value,
+      codigo: formulario["codigoInp"].value,
       nombre: formulario["nombreInp"].value,
       nota1: formulario["nota1Inp"].value,
       nota2: formulario["nota2Inp"].value,
