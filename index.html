@@ -75,6 +75,42 @@
   <button id="cerrarCodigomsg">X</button>
 </div>
 
+<!-- Modal de Confirmación -->
+<div id="model" class="modal" style="display:none;">
+  <div class="modal-content">
+    <p>¿Estás seguro de que deseas eliminar este registro?</p>
+    <button id="confirmar">Eliminar</button>
+    <button id="cancelar">Cancelar</button>
+    
+  </div>
+</div>
+<!--- el modal -->
+<style>
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .modal-content button {
+    margin: 5px;
+  }
+</style>
+
     <script src="Js/index.js"></script>
   </body>
 </html>
+

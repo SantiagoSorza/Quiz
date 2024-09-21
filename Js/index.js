@@ -12,7 +12,21 @@ const modalmsg = document.getElementById("modalmsg");
 const codigoInp = formulario["codigoInp"];
 const listaEstudiantes = document.getElementById("listaEstudiantes");
 
+//model
+const modal = document.getElementById("model");
+const botonConfirmar = document.getElementById("confirmar");
+const botonCancelar = document.getElementById("cancelar");
+let filaEliminar = null;
 
+//Para mostrar el modal
+const mostrarModal = () => {
+  modal.style.display = "flex";
+};
+
+//Para ocultar el modal
+const ocultarModal = () => {
+  modal.style.display = "none";
+};
 
 //Metodo
 
@@ -22,11 +36,11 @@ const cargarDatos = (dato) => {
   const buttonCeld = document.createElement("td");
   const button = document.createElement("button");
   button.textContent = "Eliminar";
-  
+  button.className = "boton";
+  buttonCeld.appendChild(button);
   
   button.addEventListener('click', () => {
-    row.remove();
-    delete codigosExistentes[dato.codigo]; 
+    delete codigosExistentes[dato.codigo];
   });
   
   const codigoCeld = document.createElement("td");
@@ -56,7 +70,7 @@ const cargarDatos = (dato) => {
   const aprobacionCeld = document.createElement('td');
   aprobacionCeld.textContent = definitiva >= 3.0 ? 'Aprobado' : 'No Aprobado';
 
-  buttonCeld.appendChild(button);
+  row.appendChild(buttonCeld);
   row.appendChild(buttonCeld);
   row.appendChild(codigoCeld);
   row.appendChild(nombreCeld);
@@ -69,6 +83,11 @@ const cargarDatos = (dato) => {
 
   const tbody = estudiantes.getElementsByTagName("tbody")[0];
   tbody.appendChild(row);
+    //Mostrar el modal y eliminar fila
+    button.addEventListener("click", () => {
+      filaEliminar = row;
+      mostrarModal();
+    });
 };
 
 // Evento para enviar el formulario
@@ -102,3 +121,19 @@ formulario.addEventListener("submit", (event) => {
 document.getElementById("cerrarCodigomsg").addEventListener("click", () => {
   codigomsg.style.display = 'none';
 });
+
+  // Confirmar eliminación de la fila
+  botonConfirmar.addEventListener("click", () => {
+    if (filaEliminar) {
+      filaEliminar.remove(); 
+      filaEliminar = null;
+    }
+    ocultarModal(); 
+  });
+  
+  // Cancelar la eliminación y cerrar el modal
+  botonCancelar.addEventListener("click", () => {
+    filaEliminar = null; 
+    ocultarModal(); 
+  });
+  
