@@ -32,3 +32,8 @@ body {
     grid-area: f;
     padding: 50px 50px;
 }
+
+.guardar-b{
+    cursor: pointer;
+    background-color: #429185;
+}
