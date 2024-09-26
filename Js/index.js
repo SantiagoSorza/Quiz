@@ -71,7 +71,7 @@ const cargarDatos = (dato) => {
 
   // Determinar si está aprobado
   const aprobacionCeld = document.createElement('td');
-  aprobacionCeld.textContent = definitiva >= 30 ? 'Aprobado' : 'No Aprobado';
+  aprobacionCeld.textContent = definitiva >= 3.0 ? 'Aprobado' : 'No Aprobado';
 
   row.appendChild(buttonCeld);
   row.appendChild(buttonCeld);
