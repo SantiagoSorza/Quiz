@@ -17,6 +17,7 @@ const modal = document.getElementById("model");
 const botonConfirmar = document.getElementById("confirmar");
 const botonCancelar = document.getElementById("cancelar");
 let filaEliminar = null;
+let codigoAEliminar = null;
 
 //Para mostrar el modal
 const mostrarModal = () => {
@@ -40,7 +41,9 @@ const cargarDatos = (dato) => {
   buttonCeld.appendChild(button);
   
   button.addEventListener('click', () => {
-    delete codigosExistentes[dato.codigo];
+    filaEliminar = row;
+    codigoAEliminar = dato.codigo;
+    mostrarModal();
   });
   
   const codigoCeld = document.createElement("td");
@@ -83,6 +86,7 @@ const cargarDatos = (dato) => {
 
   const tbody = estudiantes.getElementsByTagName("tbody")[0];
   tbody.appendChild(row);
+
     //Mostrar el modal y eliminar fila
     button.addEventListener("click", () => {
       filaEliminar = row;
@@ -126,7 +130,9 @@ document.getElementById("cerrarCodigomsg").addEventListener("click", () => {
   botonConfirmar.addEventListener("click", () => {
     if (filaEliminar) {
       filaEliminar.remove(); 
+      delete codigosExistentes[codigoAEliminar];
       filaEliminar = null;
+      codigoAEliminar = null;
     }
     ocultarModal(); 
   });
@@ -134,6 +140,7 @@ document.getElementById("cerrarCodigomsg").addEventListener("click", () => {
   // Cancelar la eliminación y cerrar el modal
   botonCancelar.addEventListener("click", () => {
     filaEliminar = null; 
+    codigoAEliminar = null;
     ocultarModal(); 
   });
   
